@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 '''
 Getting the value for  the interface and mac addr to a variable and 
 then pass the value to the command directly
@@ -18,6 +18,9 @@ python macchanger.py --help to print help
 #options is nobut the wlan0 and aa:bb:cc:dd:ee:ff
 #arguments is nothingbut --interface and --mac or -i and -m
 #options contains the value to get the value we call options.interface and options.new_mac
+
+#forked from https://github.com/Loganinit/python-zaid
+#Python 3 update by https://github.com/nikhildr22/python-zaid
 '''
 
 import subprocess
@@ -31,7 +34,7 @@ def macchanger(interface,macaddr):
 	subprocess.call(["ifconfig",interface,"hw","ether",macaddr])
 	subprocess.call(["ifconfig",interface,"up"])
 
-	print "[+] Changing Mac Address of Interface %s to %s"%(interface,macaddr)
+	print("[+] Changing Mac Address of Interface %s to %s"%(interface,macaddr))
 
 def get_argument():
 
@@ -49,7 +52,7 @@ def get_argument():
 
 def getmac(interface):
 
-	ifconfig_result = subprocess.check_output(["ifconfig",interface])
+	ifconfig_result = subprocess.check_output(["ifconfig",interface]).decode()
 	current_mac = re.search(r"\w\w:\w\w:\w\w:\w\w:\w\w:\w\w",ifconfig_result)
 
 	if current_mac:
@@ -62,6 +65,6 @@ macchanger(options.interface,options.new_mac)
 final_mac = getmac(options.interface)
 
 if final_mac == options.new_mac :
-	print "Mac Address Successfully Chaged with new one %r"%final_mac
+	print("Mac Address Successfully Chaged with new one %r"%final_mac)
 else:
-	print "Error Occured Fix It"
+	print("Error Occured Fix It")
