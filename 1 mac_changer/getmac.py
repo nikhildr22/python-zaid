@@ -1,11 +1,11 @@
-#!/usr/bin/python
+#!/usr/bin/ python3
 
 import subprocess
 import re
 
-ifconf = subprocess.check_output(["ifconfig","enp2s0"])
-print ifconf
+ifconfig_output = subprocess.check_output(["ifconfig","wlan0"]).decode()
+print(ifconfig_output)
 
-mac = re.search(r"\w\w:\w\w:\w\w:\w\w:\w\w:\w\w",ifconf)
+mac = re.search(r"\w\w:\w\w:\w\w:\w\w:\w\w:\w\w",ifconfig_output)
 
-print mac.group(0)
+print(f"your MAC address is {mac.group(0)}")
