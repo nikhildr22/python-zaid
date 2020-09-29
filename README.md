@@ -1,9 +1,5 @@
-#This fork focuses on Python 3 implementation
-#Colaborators are always welcomed
-## Credits to Zaid @t Zsecurity.org 
-## For his wonderful course on Learn Python & Ethical Hacking From Scratch 
-
-link for the course: https://www.udemy.com/learn-python-and-ethical-hacking-from-scratch/
+# This fork focuses on Python 3 implementation
+# Colaborators are always welcomed
 
 ## scripts
 * Mac Changer
