@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 '''
 Getting the value for  the interface and mac addr to a variable and 
 then pass the value to the command directly
@@ -30,7 +30,7 @@ def macchanger(interface,macaddr):
 	subprocess.call(["ifconfig",interface,"hw","ether",macaddr])
 	subprocess.call(["ifconfig",interface,"up"])
 
-	print "[+] Changing Mac Address of Interface %s to %s"%(interface,macaddr)
+	print (f"[+] Changing Mac Address of Interface {interface} to {macaddr}")
 
 def get_argument():
 	parser=optparse.OptionParser()	
