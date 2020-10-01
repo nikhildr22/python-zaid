@@ -1,4 +1,4 @@
-#!/usr/bin/python2.7
+#!/usr/bin/python3
 
 import subprocess
 import optparse
@@ -10,7 +10,7 @@ def macchanger(interface,macaddr):
 	subprocess.call(["ifconfig",interface,"hw","ether",macaddr])
 	subprocess.call(["ifconfig",interface,"up"])
 
-	print "[+] Changing Mac Address of Interface %s to %s"%(interface,macaddr)
+	print(f"[+] Changing Mac Address of Interface {interface} to {macaddr}")
 
 def get_argument():
 
@@ -28,7 +28,7 @@ def get_argument():
 
 def getmac(interface):
 
-	ifconfig_result = subprocess.check_output(["ifconfig",interface])
+	ifconfig_result = subprocess.check_output(["ifconfig",interface]).decode()
 	current_mac = re.search(r"\w\w:\w\w:\w\w:\w\w:\w\w:\w\w",ifconfig_result)
 
 	if current_mac:
@@ -46,6 +46,6 @@ final_mac = getmac(options.interface)
 #verify whether the mac is changed or Not
 
 if final_mac == options.new_mac :
-	print "Mac Address Successfully Chaged with new one %r"%final_mac
+	print(f"Mac Address Successfully Chaged with new one {final_mac}")
 else:
-	print "Error Occured Fix It"
+	print("Error Occured! Fix It")
